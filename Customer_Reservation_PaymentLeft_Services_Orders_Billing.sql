@@ -1,32 +1,4 @@
 BEGIN TRANSACTION;
-
-CREATE TABLE IF NOT EXISTS "room_status" (
-	"ID"	INTEGER NOT NULL,
-	"status"	TEXT NOT NULL,
-	"description"	TEXT,
-	PRIMARY KEY("ID")
-);
-
-CREATE TABLE IF NOT EXISTS "category" (
-	"ID"	INTEGER NOT NULL,
-	"category"	TEXT NOT NULL,
-	"price"	INTEGER NOT NULL,
-	"description"	TEXT,
-	PRIMARY KEY("ID")
-);
-
-CREATE TABLE IF NOT EXISTS "room" (
-    "ID"    INTEGER NOT NULL,
-    "category_id"   INTEGER NOT NULL,
-    "status_id" INTEGER NOT NULL,
-    PRIMARY KEY("ID")
-	CONSTRAINT fk_status
-    FOREIGN KEY(status_id) REFERENCES room_status(ID)
-	CONSTRAINT fk_category
-    FOREIGN KEY(category_id) REFERENCES category(ID)
-);
-
-
 CREATE TABLE IF NOT EXISTS "Customer" (
 	"ID"	INTEGER NOT NULL UNIQUE,
 	"First_name"	VARCHAR(50) NOT NULL,
@@ -36,7 +8,6 @@ CREATE TABLE IF NOT EXISTS "Customer" (
 	"Email"	TEXT,
 	PRIMARY KEY("ID"AUTOINCREMENT)
 );
-
 CREATE TABLE IF NOT EXISTS "Reservation" (
 	"ID"	INTEGER,
 	"Customer_ID"	INTEGER,
@@ -52,10 +23,17 @@ CREATE TABLE IF NOT EXISTS "Reservation" (
 	PRIMARY KEY("ID"AUTOINCREMENT)
 	CONSTRAINT fk_customer
 	FOREIGN KEY(Customer_ID) REFERENCES Customer(ID)
-	CONSTRAINT fk_room_id_reserve
-	FOREIGN KEY (Room_ID) REFERENCES room(ID)
 );
 
+CREATE TABLE IF NOT EXISTS "Billing" (
+	"ID"	INTEGER NOT NULL,
+	"RoomID"	TEXT NOT NULL,
+	"Customer_ID"	INTEGER NOT NULL,
+	"Accomodation_Cost"	REAL NOT NULL,
+	"Service_cost"	REAL,
+	PRIMARY KEY("ID" AUTOINCREMENT)
+	FOREIGN KEY(Customer_ID) REFERENCES Customer(ID)
+);
 
 CREATE TABLE  IF NOT EXISTS "Service" (
 	"ID"	TEXT NOT NULL,
@@ -71,158 +49,9 @@ CREATE TABLE  IF NOT EXISTS "Service_order" (
 	"Service_ID"	TEXT NOT NULL,
 	PRIMARY KEY("ID" AUTOINCREMENT) 
 	CONSTRAINT fk_Services
-	FOREIGN KEY (Service_ID) REFERENCES Service (ID)
-	CONSTRAINT fk_room_id_order
-	FOREIGN KEY(Room_ID) REFERENCES room(ID)
+	FOREIGN KEY (Service_ID)
+       REFERENCES Service (ID)
 );
-
-CREATE TABLE IF NOT EXISTS "Billing" (
-	"ID"	INTEGER NOT NULL,
-	"RoomID"	TEXT NOT NULL,
-	"Customer_ID"	INTEGER NOT NULL,
-	"Accomodation_Cost"	REAL NOT NULL,
-	"Service_cost"	REAL,
-	PRIMARY KEY("ID" AUTOINCREMENT)
-	CONSTRAINT fk_customer_id_billing
-	FOREIGN KEY(Customer_ID) REFERENCES Customer(ID)
-	CONSTRAINT fk_room_id_billing
-	FOREIGN KEY(RoomID) REFERENCES room(ID)
-);
-
-
-INSERT INTO "room_status"("ID","status","description")
-VALUES 
- (1,'Occupied','A guest is currently occupied in the room'),
- (2,'Stayover','The guest is not expected to check out today and will remain at least one more night.'),
- (3,'On-Change','The guest has departed, but the room has not yet been cleaned and ready for sale.'),
- (4,' Do Not Disturb','The guest has requested not to be disturbed'),
- (5,'Cleaning in progress','Room attendant is currently cleaning this room'),
- (6,'Sleep-out','A guest is registered to the room, but the bed has not been used'),
- (7,'On-Queue','Guest has arrived at the hotel, but the room assigned is not yet ready'),
- (8,'Skipper','The guest has left the hotel without making arrangements to settle his or her account.'),
- (9,'Vacant and ready','The room has been cleaned and inspected and is ready for an arriving guest.'),
- (10,' Lockout','The room has been locked so that the guest cannot re-enter until he or she is cleared by a hotel official.'),
- (11,'Did not check out','The guest made arrangements to settle his or her bills ( and thus not a skipper), but has left without informing the front desk.'),
- (12,' Due Out','The room is expected to become vacant after the following guest checks out.'),
- (13,'Check-Out','The guest has settled his or her account, returned the room keys and left the hotel.'),
- (14,'Late Check out','The guest has requested and is being allowed to check out later than the normal/standard departure time of the hotel.'),
- (15,'Early Check-in','Guest has requested for an Early Checkin and is being allowed to check-in earlier than the normal/standard check-in time of the hotel.'),
- (16,'Vacant and Clean ','Room is Vacant and Cleaned by the housekeeper.'),
- (17,'Vacant and Dirty','Room is Vacant and Dirty.'),
- (18,'Vacant and Ready','Room is Vacant and Ready for Check-in'),
- (19,'Occupied and Clean','Room is Occupied and Cleaned by the Housekeeping.'),
- (20,'Occupied and Dirty ','Room is Occupied and yet to be cleaned by the housekeeping.'),
- (21,'Double Lock','Guest has put a double lock in the room.'),
- (22,'Chain Lock','Guest has placed a Chain Lock in the room.'),
- (23,'House Use ','Room is used by the hotel staff or someone staying from the management team.'),
- (24,'No Show',' A guest who made a room reservation but did not register or Check-in.'),
- (25,'Service Refused','Guest refused to clean the room.');
- 
-INSERT INTO "category" ("ID","category","price","description")
-VALUES 
- (1,'Single',100000,'A room assigned to one person. May have one or more beds.'),
- (2,'Double',200000,'A room assigned to two people. May have one or more beds.'),
- (3,'Triple',300000,'A room that can accommodate three persons and has been fitted with three twin beds, one double bed and one twin bed or two double beds.'),
- (4,'Quad',400000,'A room assigned to four people. May have two or more beds.'),
- (5,'Queen',500000,'A room with a queen-sized bed. May be occupied by one or more people.'),
- (6,'King',600000,'A room with a king-sized bed. May be occupied by one or more people.'),
- (7,'Twin',700000,'A room with two twin beds. May be occupied by one or more people.'),
- (8,'Suite',800000,'A parlour or living room connected with to one or more bedrooms.'),
- (9,'Disabled room',900000,'This room type is mainly designed for disabled guests and it is required by law that hotels must provide a certain number of accessible rooms to avoid discrimination.');
-
-INSERT INTO "room" ("ID","category_id","status_id")
-VALUES 
- (101,8,19),
- (102,6,18),
- (103,6,25),
- (104,8,20),
- (105,3,7),
- (106,2,8),
- (107,1,22),
- (108,4,15),
- (109,1,17),
- (110,2,11),
- (201,3,12),
- (202,1,2),
- (203,2,7),
- (204,5,15),
- (205,7,9),
- (206,3,4),
- (207,4,4),
- (208,2,17),
- (209,3,6),
- (210,2,4),
- (301,9,25),
- (302,2,15),
- (303,3,17),
- (304,3,4),
- (305,4,15),
- (306,9,21),
- (307,2,15),
- (308,4,2),
- (309,6,4),
- (310,1,10),
- (401,6,19),
- (402,7,4),
- (403,7,19),
- (404,7,20),
- (405,4,15),
- (406,4,7),
- (407,8,23),
- (408,3,3),
- (409,9,25),
- (410,4,22),
- (501,5,4),
- (502,5,25),
- (503,8,14),
- (504,2,17),
- (505,1,18),
- (506,3,1),
- (507,6,9),
- (508,8,4),
- (509,8,11),
- (510,4,22),
- (601,3,17),
- (602,7,18),
- (603,9,19),
- (604,7,18),
- (605,2,14),
- (606,5,2),
- (607,5,8),
- (608,2,12),
- (609,9,1),
- (610,5,17),
- (701,2,22),
- (702,8,19),
- (703,2,12),
- (704,2,13),
- (705,7,8),
- (706,9,10),
- (707,5,19),
- (708,2,17),
- (709,5,13),
- (710,2,19),
- (801,2,5),
- (802,6,17),
- (803,3,9),
- (804,9,24),
- (805,6,14),
- (806,6,14),
- (807,2,3),
- (808,4,22),
- (809,4,1),
- (810,6,19),
- (901,1,20),
- (902,6,25),
- (903,6,4),
- (904,3,16),
- (905,8,2),
- (906,5,23),
- (907,5,12),
- (908,9,7),
- (909,7,20),
- (910,8,6);
-
 INSERT INTO "Customer" ("First_name","Last_name","Gender","Phone","Email") VALUES 
  ('Carl','Mason',1,446513744,'CarlMason@gmail.com'),
  ('Elliott','Carter',1,241751346,'ElliottCarter@gmail.com'),
@@ -285,6 +114,39 @@ INSERT INTO "Reservation" ("Customer_ID","Adults","Children","Room_ID","Check_in
  (23,6,1,102,'12:00:00 PM','3/25/2015','12:00:00 PM','3/28/2015','3/25/2015',NULL),
  (20,4,5,906,'12:00:00 PM','5/24/2015','12:00:00 PM','5/27/2015','5/24/2015',NULL),
  (1,7,1,104,'12:00:00 PM','4/2/2015','12:00:00 PM','4/5/2015','4/2/2015',NULL);
+INSERT INTO "Billing" ( "RoomID","Customer_ID", "Accomodation_Cost", "Service_cost" )
+VALUES
+( 104,	12,	1000,	20),
+( 103,	32,	2000,	10),
+( 107,	43,	2000,	50),
+( 206,	31, 1000,	20),
+( 103,	45,	5000,	50),
+( 206,	67,	4000,	20),
+( 407,	56,	2000,	20),
+( 203,	11,	3000,	50),
+( 309,	33,	5000,	20),
+( 308,	47,	5000,	20),
+( 307,	37,	1000,	10),
+( 401,	15,	2000,	10),
+( 205,	16,	1000,	10),
+( 305,	41,	1000,	20),
+( 102,	10,	2000,	50),
+( 405,	49,	3000,	0),
+( 207,	26,	1000,	10),
+( 308,	39,	2000,	10),
+( 402,	48,	5000,	20),
+( 307,	18,	4000,	50),
+( 308,	39,	2000,	10),
+( 209,	19,	4000,	50),
+( 201,	17,	1000,	50),
+( 204,	22,	5000,	10),
+( 403,	23,	7000,	10),
+( 305,	30,	2000,	20),
+( 102,	21,	7000,	20),
+( 201,	20,	4000,	20),
+( 408,	40,	7000,	20),
+( 207,	46,	2000,	10);
+
 
 INSERT INTO "Service" ("ID","Service","Description","Charge" )
 VALUES
@@ -334,37 +196,3 @@ VALUES
 (408,	'PET'),
 (207,	'SNK');
 
-INSERT INTO "Billing" ( "RoomID","Customer_ID", "Accomodation_Cost", "Service_cost" )
-VALUES
-( 104,	12,	1000,	20),
-( 103,	32,	2000,	10),
-( 107,	43,	2000,	50),
-( 206,	31, 1000,	20),
-( 103,	45,	5000,	50),
-( 206,	67,	4000,	20),
-( 407,	56,	2000,	20),
-( 203,	11,	3000,	50),
-( 309,	33,	5000,	20),
-( 308,	47,	5000,	20),
-( 307,	37,	1000,	10),
-( 401,	15,	2000,	10),
-( 205,	16,	1000,	10),
-( 305,	41,	1000,	20),
-( 102,	10,	2000,	50),
-( 405,	49,	3000,	0),
-( 207,	26,	1000,	10),
-( 308,	39,	2000,	10),
-( 402,	48,	5000,	20),
-( 307,	18,	4000,	50),
-( 308,	39,	2000,	10),
-( 209,	19,	4000,	50),
-( 201,	17,	1000,	50),
-( 204,	22,	5000,	10),
-( 403,	23,	7000,	10),
-( 305,	30,	2000,	20),
-( 102,	21,	7000,	20),
-( 201,	20,	4000,	20),
-( 408,	40,	7000,	20),
-( 207,	46,	2000,	10);
-
-COMMIT
