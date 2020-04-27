@@ -25,16 +25,6 @@ CREATE TABLE IF NOT EXISTS "Reservation" (
 	FOREIGN KEY(Customer_ID) REFERENCES Customer(ID)
 );
 
-CREATE TABLE IF NOT EXISTS "Billing" (
-	"ID"	INTEGER NOT NULL,
-	"RoomID"	TEXT NOT NULL,
-	"Customer_ID"	INTEGER NOT NULL,
-	"Accomodation_Cost"	REAL NOT NULL,
-	"Service_cost"	REAL,
-	PRIMARY KEY("ID" AUTOINCREMENT)
-	FOREIGN KEY(Customer_ID) REFERENCES Customer(ID)
-);
-
 CREATE TABLE  IF NOT EXISTS "Service" (
 	"ID"	TEXT NOT NULL,
 	"Service"	TEXT NOT NULL,
@@ -114,39 +104,6 @@ INSERT INTO "Reservation" ("Customer_ID","Adults","Children","Room_ID","Check_in
  (23,6,1,102,'12:00:00 PM','3/25/2015','12:00:00 PM','3/28/2015','3/25/2015',NULL),
  (20,4,5,906,'12:00:00 PM','5/24/2015','12:00:00 PM','5/27/2015','5/24/2015',NULL),
  (1,7,1,104,'12:00:00 PM','4/2/2015','12:00:00 PM','4/5/2015','4/2/2015',NULL);
-INSERT INTO "Billing" ( "RoomID","Customer_ID", "Accomodation_Cost", "Service_cost" )
-VALUES
-( 104,	12,	1000,	20),
-( 103,	32,	2000,	10),
-( 107,	43,	2000,	50),
-( 206,	31, 1000,	20),
-( 103,	45,	5000,	50),
-( 206,	67,	4000,	20),
-( 407,	56,	2000,	20),
-( 203,	11,	3000,	50),
-( 309,	33,	5000,	20),
-( 308,	47,	5000,	20),
-( 307,	37,	1000,	10),
-( 401,	15,	2000,	10),
-( 205,	16,	1000,	10),
-( 305,	41,	1000,	20),
-( 102,	10,	2000,	50),
-( 405,	49,	3000,	0),
-( 207,	26,	1000,	10),
-( 308,	39,	2000,	10),
-( 402,	48,	5000,	20),
-( 307,	18,	4000,	50),
-( 308,	39,	2000,	10),
-( 209,	19,	4000,	50),
-( 201,	17,	1000,	50),
-( 204,	22,	5000,	10),
-( 403,	23,	7000,	10),
-( 305,	30,	2000,	20),
-( 102,	21,	7000,	20),
-( 201,	20,	4000,	20),
-( 408,	40,	7000,	20),
-( 207,	46,	2000,	10);
-
 
 INSERT INTO "Service" ("ID","Service","Description","Charge" )
 VALUES
