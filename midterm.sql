@@ -58,6 +58,27 @@ CREATE TABLE IF NOT EXISTS "room_status" (
 	PRIMARY KEY("ID")
 );
 
+CREATE TABLE IF NOT EXISTS "Position_ID" (
+	"ID"	INTEGER NOT NULL,
+	"Position"	TEXT NOT NULL,
+	"Salary"	INTEGER NOT NULL,
+	PRIMARY KEY("ID")
+);
+
+CREATE TABLE IF NOT EXISTS "Employee" (
+	"ID"	INTEGER NOT NULL,
+	"first_name"	TEXT,
+	"last_name"	TEXT,
+	"Gender"	TEXT NOT NULL,
+	"Mail"	TEXT,
+	"Phone_number"	TEXT,
+	"Address"	TEXT,
+	"Position_ID"	INTEGER,
+	FOREIGN KEY("Position_ID") REFERENCES "Position_ID"("ID"),
+	PRIMARY KEY("ID")
+);
+
+
 INSERT INTO "Service" VALUES ('BF','breakfast','standart 5 star breakfast with choices',20);
 INSERT INTO "Service" VALUES ('PRK','safe parking','safe and secured parking area with 24/7 guards',10);
 INSERT INTO "Service" VALUES ('LDRY','laudry','fast and profestional laudry service',10);
@@ -291,4 +312,121 @@ INSERT INTO "Service_order" VALUES (27,'102','SPT');
 INSERT INTO "Service_order" VALUES (28,'201','BF');
 INSERT INTO "Service_order" VALUES (29,'408','PET');
 INSERT INTO "Service_order" VALUES (30,'207','SNK');
+
+INSERT INTO "Position_ID" VALUES (1,'General Manager',30000000);
+INSERT INTO "Position_ID" VALUES (2,'Sales',15000000);
+INSERT INTO "Position_ID" VALUES (3,'Spa Manager',14000000);
+INSERT INTO "Position_ID" VALUES (4,'Event Planner',10000000);
+INSERT INTO "Position_ID" VALUES (5,'Event Manager',14000000);
+INSERT INTO "Position_ID" VALUES (6,'Chef',14000000);
+INSERT INTO "Position_ID" VALUES (7,'Cook',7000000);
+INSERT INTO "Position_ID" VALUES (8,'Beverage Manager',8000000);
+INSERT INTO "Position_ID" VALUES (9,'Front Desk',8000000);
+INSERT INTO "Position_ID" VALUES (10,'Concierge',5000000);
+INSERT INTO "Position_ID" VALUES (11,'Bellhop',4000000);
+INSERT INTO "Position_ID" VALUES (12,'Housekepping Manager',10000000);
+INSERT INTO "Position_ID" VALUES (13,'Housekeeper',3000000);
+INSERT INTO "Position_ID" VALUES (14,'Server',3000000);
+
+INSERT INTO "Employee" VALUES (134841,'Donna','Brown','Female','donna.brown@aol.com','212-434-7910','670 Lima',11);
+INSERT INTO "Employee" VALUES (153989,'Jack','Alexander','Male','jack.alexander@gmail.com','702-603-3769','434 Las Vegas',7);
+INSERT INTO "Employee" VALUES (158666,'Rebecca','Stewart','Female','rebecca.stewart@gmail.com','209-233-7631','315 Independence',11);
+INSERT INTO "Employee" VALUES (162402,'Diana','Peterson','Female','diana.peterson@hotmail.co.uk','479-783-5656','440 Eureka Springs',2);
+INSERT INTO "Employee" VALUES (183071,'Andrea','Garcia','Female','andrea.garcia@aol.com','219-624-3708','770 Granger',11);
+INSERT INTO "Employee" VALUES (185032,'Eugene','Perez','Male','eugene.perez@exxonmobil.com','262-472-7112','915 Racine',14);
+INSERT INTO "Employee" VALUES (193819,'Benjamin','Russell','Male','benjamin.russell@charter.net','262-404-2252','982 Fremont',4);
+INSERT INTO "Employee" VALUES (212893,'Janet','Henderson','Female','janet.henderson@ntlworld.com','239-769-6347','444 Miami',13);
+INSERT INTO "Employee" VALUES (214352,'Theresa','Lee','Female','theresa.lee@gmail.com','319-553-8919','481 Toeterville',7);
+INSERT INTO "Employee" VALUES (218791,'Aaron','Price','Male','aaron.price@bp.com','219-287-8926','561 Eckerty',11);
+INSERT INTO "Employee" VALUES (225925,'Paul','Cooper','Male','paul.cooper@gmail.com','210-984-4722','515 Glidden',11);
+INSERT INTO "Employee" VALUES (226714,'Nancy','Davis','Female','nancy.davis@ibm.com','219-610-3067','686 Bowling Green',5);
+INSERT INTO "Employee" VALUES (227922,'Amanda','Hughes','Female','amanda.hughes@rediffmail.com','225-544-9700','291 Lake Charles',4);
+INSERT INTO "Employee" VALUES (231469,'Ralph','Flores','Male','ralph.flores@yahoo.com','316-280-2864','181 Sabetha',12);
+INSERT INTO "Employee" VALUES (241882,'Debra','Wood','Female','debra.wood@hotmail.com','308-646-6219','563 Blair',2);
+INSERT INTO "Employee" VALUES (247137,'Alan','Rivera','Male','alan.rivera@apple.com','423-277-6819','196 Knoxville',8);
+INSERT INTO "Employee" VALUES (253573,'Sharon','Lopez','Female','sharon.lopez@gmail.com','304-934-5548','322 Bartley',7);
+INSERT INTO "Employee" VALUES (262382,'Cheryl','Miller','Female','cheryl.miller@ntlworld.com','270-880-3858','793 Bays',6);
+INSERT INTO "Employee" VALUES (263480,'Daniel','Cooper','Male','daniel.cooper@yahoo.com','701-510-8162','742 Manning',12);
+INSERT INTO "Employee" VALUES (265813,'Jack','Campbell','Male','jack.campbell@gmail.com','316-499-5737','192 Kalvesta',10);
+INSERT INTO "Employee" VALUES (278556,'Richard','Mitchell','Male','richard.mitchell@verizon.net','205-621-5884','756 Ohatchee',5);
+INSERT INTO "Employee" VALUES (293459,'Steven','Phillips','Male','steven.phillips@hotmail.com','225-968-5952','234 Baton Rouge',10);
+INSERT INTO "Employee" VALUES (301576,'Wayne','Watson','Male','wayne.watson@gmail.com','701-231-9370','723 Maida',12);
+INSERT INTO "Employee" VALUES (316110,'Jeremy','Sanchez','Male','jeremy.sanchez@hotmail.com','423-974-2755','554 Alcoa',10);
+INSERT INTO "Employee" VALUES (325319,'Carolyn','Price','Female','carolyn.price@yahoo.com','217-409-4338','947 Wheaton',10);
+INSERT INTO "Employee" VALUES (329752,'Lillian','Brown','Female','lillian.brown@aol.com','239-812-9041','292 Panacea',13);
+INSERT INTO "Employee" VALUES (333476,'Mary','Wilson','Female','mary.wilson@sbcglobal.net','423-937-8660','345 Nashville',3);
+INSERT INTO "Employee" VALUES (335732,'Brenda','Butler','Female','brenda.butler@gmail.com','480-814-8284','811 Mesa',14);
+INSERT INTO "Employee" VALUES (363065,'Nancy','Jones','Female','nancy.jones@gmail.com','212-825-1930','369 New York City',6);
+INSERT INTO "Employee" VALUES (380086,'Carol','Murphy','Female','carol.murphy@gmail.com','216-336-0009','138 Blanchester',11);
+INSERT INTO "Employee" VALUES (386158,'Melissa','King','Female','melissa.king@comcast.net','216-605-3731','544 New Matamoras',8);
+INSERT INTO "Employee" VALUES (388642,'Ruby','Rogers','Female','ruby.rogers@gmail.com','423-231-6507','544 Woodbury',5);
+INSERT INTO "Employee" VALUES (392491,'Theresa','Murphy','Female','theresa.murphy@gmail.com','907-356-1555','905 Mc Grath',10);
+INSERT INTO "Employee" VALUES (400173,'Dorothy','Edwards','Female','dorothy.edwards@hotmail.co.uk','215-902-6888','220 Philadelphia',3);
+INSERT INTO "Employee" VALUES (407061,'Elizabeth','Jackson','Female','elizabeth.jackson@aol.com','603-568-6118','439 Rochester',4);
+INSERT INTO "Employee" VALUES (408351,'Diane','Evans','Female','diane.evans@yahoo.com','215-793-6791','525 Hydetown',3);
+INSERT INTO "Employee" VALUES (426038,'Joan','Stewart','Female','joan.stewart@yahoo.com','216-637-6800','693 Middleport',4);
+INSERT INTO "Employee" VALUES (428945,'Joe','Robinson','Male','joe.robinson@gmail.com','219-904-2161','552 Michigantown',1);
+INSERT INTO "Employee" VALUES (441771,'Cheryl','Scott','Female','cheryl.scott@gmail.com','215-288-9345','879 Quecreek',9);
+INSERT INTO "Employee" VALUES (447813,'Ann','Coleman','Female','ann.coleman@ibm.com','319-994-4179','330 Hancock',7);
+INSERT INTO "Employee" VALUES (456747,'Roy','Griffin','Male','roy.griffin@yahoo.com','219-506-9378','585 Liberty',6);
+INSERT INTO "Employee" VALUES (461593,'Nicole','Ward','Female','nicole.ward@yahoo.com','231-761-7861','839 Detroit',6);
+INSERT INTO "Employee" VALUES (474599,'Maria','Walker','Female','maria.walker@microsoft.com','423-668-5506','882 Lawrenceburg',9);
+INSERT INTO "Employee" VALUES (476433,'Lillian','Mitchell','Female','lillian.mitchell@shaw.ca','316-876-1484','124 Wichita',12);
+INSERT INTO "Employee" VALUES (477253,'Anne','Russell','Female','anne.russell@ibm.com','605-635-1306','341 Stockholm',14);
+INSERT INTO "Employee" VALUES (477616,'Frances','Young','Female','frances.young@gmail.com','210-819-9765','982 Delmita',3);
+INSERT INTO "Employee" VALUES (478003,'Cynthia','White','Female','cynthia.white@gmail.com','314-593-3092','485 Kansas City',3);
+INSERT INTO "Employee" VALUES (489424,'Phillip','White','Male','phillip.white@gmail.com','503-668-6592','580 Mapleton',9);
+INSERT INTO "Employee" VALUES (491943,'Nancy','Howard','Female','nancy.howard@gmail.com','236-973-8086','819 Saxe',6);
+INSERT INTO "Employee" VALUES (495141,'Tammy','Young','Female','tammy.young@comcast.net','231-290-3075','314 Alma',6);
+INSERT INTO "Employee" VALUES (499687,'Patrick','Bailey','Male','patrick.bailey@aol.com','319-812-6957','371 Macksburg',11);
+INSERT INTO "Employee" VALUES (515103,'Anne','Perez','Female','anne.perez@sbcglobal.net','423-837-3338','263 Cookeville',14);
+INSERT INTO "Employee" VALUES (524896,'Judy','Hernandez','Female','judy.hernandez@gmail.com','316-736-6126','700 Topeka',13);
+INSERT INTO "Employee" VALUES (525955,'Judy','Gonzales','Female','judy.gonzales@gmail.com','201-640-8645','479 Eatontown',8);
+INSERT INTO "Employee" VALUES (528509,'Paula','Diaz','Female','paula.diaz@gmail.com','252-531-7641','301 Beulaville',3);
+INSERT INTO "Employee" VALUES (528673,'Paul','Watson','Male','paul.watson@hotmail.com','270-556-7711','458 Blue River',4);
+INSERT INTO "Employee" VALUES (533952,'Kelly','Adams','Female','kelly.adams@bp.com','405-418-0037','397 Meno',1);
+INSERT INTO "Employee" VALUES (539712,'Nancy','Baker','Female','nancy.baker@bp.com','229-336-5117','833 Atlanta',13);
+INSERT INTO "Employee" VALUES (560455,'Carolyn','Hayes','Female','carolyn.hayes@hotmail.co.uk','239-882-8784','675 Saint Cloud',11);
+INSERT INTO "Employee" VALUES (621833,'Gregory','Edwards','Male','gregory.edwards@outlook.com','503-256-9654','671 Bonanza',13);
+INSERT INTO "Employee" VALUES (622406,'Thomas','Lewis','Male','thomas.lewis@gmail.com','314-679-3697','471 Dutchtown',9);
+INSERT INTO "Employee" VALUES (623253,'Ruby','Stewart','Female','ruby.stewart@gmail.com','218-445-2369','821 Margie',14);
+INSERT INTO "Employee" VALUES (623929,'Jimmy','Howard','Male','jimmy.howard@yahoo.com','212-855-9316','147 Oriskany',7);
+INSERT INTO "Employee" VALUES (639892,'Jose','Hill','Male','jose.hill@hotmail.com','228-245-5000','482 Biloxi',13);
+INSERT INTO "Employee" VALUES (677509,'Lois','Walker','Female','lois.walker@hotmail.com','303-572-8492','272 Denver',4);
+INSERT INTO "Employee" VALUES (683826,'Roger','Roberts','Male','roger.roberts@gmail.com','206-497-3141','648 Mount Vernon',13);
+INSERT INTO "Employee" VALUES (687017,'Frances','Watson','Female','frances.watson@outlook.com','406-530-8069','791 Trego',12);
+INSERT INTO "Employee" VALUES (702813,'Ernest','Martinez','Male','ernest.martinez@gmail.com','479-951-4138','112 Uniontown',6);
+INSERT INTO "Employee" VALUES (704709,'Harold','Nelson','Male','harold.nelson@gmail.com','217-555-9216','474 Carol Stream',2);
+INSERT INTO "Employee" VALUES (726264,'Carl','Collins','Male','carl.collins@yahoo.com','479-740-7633','916 Wright',11);
+INSERT INTO "Employee" VALUES (732017,'Cynthia','Ramirez','Female','cynthia.ramirez@btinternet.com','406-961-7340','488 Browning',3);
+INSERT INTO "Employee" VALUES (750173,'Antonio','Roberts','Male','antonio.roberts@hotmail.com','205-267-7304','960 Mc Calla',7);
+INSERT INTO "Employee" VALUES (758872,'Henry','Jenkins','Male','henry.jenkins@hotmail.com','314-731-7135','668 Riverside',7);
+INSERT INTO "Employee" VALUES (761821,'Ernest','Washington','Male','ernest.washington@msn.com','212-596-1659','691 Saranac Lake',3);
+INSERT INTO "Employee" VALUES (765850,'Linda','Moore','Female','linda.moore@gmail.com','215-793-7095','432 Albion',4);
+INSERT INTO "Employee" VALUES (766610,'Joyce','Jenkins','Female','joyce.jenkins@aol.com','262-455-4187','987 Ellsworth',11);
+INSERT INTO "Employee" VALUES (802554,'Ryan','Alexander','Male','ryan.alexander@shell.com','225-395-3347','611 Jarreau',6);
+INSERT INTO "Employee" VALUES (806955,'William','Hernandez','Male','william.hernandez@rediffmail.com','239-276-0532','707 Mary Esther',5);
+INSERT INTO "Employee" VALUES (818384,'Peter','Washington','Male','peter.washington@bp.com','231-322-0316','146 Portage',2);
+INSERT INTO "Employee" VALUES (844177,'Margaret','Allen','Female','margaret.allen@gmail.com','216-697-6987','721 Richmond Dale',1);
+INSERT INTO "Employee" VALUES (867084,'Deborah','Smith','Female','deborah.smith@yahoo.com','907-279-8694','719 Atqasuk',6);
+INSERT INTO "Employee" VALUES (870820,'Martha','Washington','Female','martha.washington@aol.com','405-945-0242','262 Nardin',13);
+INSERT INTO "Employee" VALUES (879753,'Pamela','Wright','Female','pamela.wright@aol.com','307-329-8832','142 Banner',8);
+INSERT INTO "Employee" VALUES (883936,'Douglas','Flores','Male','douglas.flores@gmail.com','303-836-4721','554 Eckert',9);
+INSERT INTO "Employee" VALUES (890290,'Julia','Scott','Female','julia.scott@apple.com','423-939-1010','802 Primm Springs',8);
+INSERT INTO "Employee" VALUES (893212,'Amy','Howard','Female','amy.howard@aol.com','803-613-3168','474 Kline',8);
+INSERT INTO "Employee" VALUES (904898,'Ann','Cooper','Female','ann.cooper@exxonmobil.com','406-278-6460','142 Arlee',4);
+INSERT INTO "Employee" VALUES (912990,'Joshua','Stewart','Male','joshua.stewart@yahoo.ca','217-279-9342','442 New Douglas',1);
+INSERT INTO "Employee" VALUES (915638,'Jason','Anderson','Male','jason.anderson@gmail.com','217-856-6752','779 Hudson',4);
+INSERT INTO "Employee" VALUES (917395,'Christopher','Nelson','Male','christopher.nelson@aol.com','480-946-9780','362 Willow Beach',4);
+INSERT INTO "Employee" VALUES (917937,'Todd','Hall','Male','todd.hall@yahoo.com','240-513-8668','806 Randallstown',13);
+INSERT INTO "Employee" VALUES (923947,'Mary','Bryant','Female','mary.bryant@verizon.net','319-827-3516','993 Conroy',12);
+INSERT INTO "Employee" VALUES (940761,'Brenda','Robinson','Female','brenda.robinson@gmail.com','225-945-4954','994 Stonewall',12);
+INSERT INTO "Employee" VALUES (940922,'Melissa','Butler','Female','melissa.butler@hotmail.com','308-827-9016','477 Maxwell',9);
+INSERT INTO "Employee" VALUES (951225,'Margaret','Brooks','Female','margaret.brooks@gmail.com','303-960-0117','664 Haswell',11);
+INSERT INTO "Employee" VALUES (958326,'Larry','Miller','Male','larry.miller@shell.com','217-574-9283','201 East Saint Louis',6);
+INSERT INTO "Employee" VALUES (969580,'Matthew','Turner','Male','matthew.turner@gmail.com','236-972-7624','866 Heathsville',6);
+INSERT INTO "Employee" VALUES (969964,'Janice','Parker','Female','janice.parker@yahoo.com','314-842-5984','436 Whiteman Air Force Base',7);
+INSERT INTO "Employee" VALUES (971640,'Clarence','Ross','Male','clarence.ross@apple.com','423-772-0118','339 Oneida',6);
+INSERT INTO "Employee" VALUES (979607,'Carol','Edwards','Female','carol.edwards@msn.com','225-283-4295','207 Shreveport',2);
+
 COMMIT;
