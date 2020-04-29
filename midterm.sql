@@ -1,10 +1,11 @@
 BEGIN TRANSACTION;
 CREATE TABLE IF NOT EXISTS "Service_order" (
-	"ID"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-	"Room_ID"	TEXT NOT NULL,
+	"ID"	INTEGER NOT NULL,
+	"Res_ID"	INT NOT NULL,
 	"Service_ID"	TEXT NOT NULL,
+	PRIMARY KEY("ID" AUTOINCREMENT),
 	CONSTRAINT "fk_Services" FOREIGN KEY("Service_ID") REFERENCES "Service"("ID"),
-	CONSTRAINT "fk_room_id_order" FOREIGN KEY("Room_ID") REFERENCES "room"("ID")
+	CONSTRAINT "fk_reservation_id_order" FOREIGN KEY("Res_ID") REFERENCES "Reservation"("ID")
 );
 CREATE TABLE IF NOT EXISTS "Service" (
 	"ID"	TEXT NOT NULL,
@@ -282,36 +283,36 @@ INSERT INTO "Reservation" VALUES (28,23,6,1,102,'12:00:00 PM','2015-03-25','12:0
 INSERT INTO "Reservation" VALUES (29,20,4,5,906,'12:00:00 PM','2015-05-24','12:00:00 PM','2015-05-27','2015-05-24','online'),
 INSERT INTO "Reservation" VALUES (30,1,7,1,104,'12:00:00 PM','2015-04-02','12:00:00 PM','2015-04-05','2015-04-02','online');
 
-INSERT INTO "Service_order" VALUES (1,'104','BF');
-INSERT INTO "Service_order" VALUES (2,'103','PRK');
-INSERT INTO "Service_order" VALUES (3,'107','BCH');
-INSERT INTO "Service_order" VALUES (4,'206','SPT');
-INSERT INTO "Service_order" VALUES (5,'103','SPA');
-INSERT INTO "Service_order" VALUES (6,'206','PET');
-INSERT INTO "Service_order" VALUES (7,'407','PET');
-INSERT INTO "Service_order" VALUES (8,'203','SPA');
-INSERT INTO "Service_order" VALUES (9,'309','BF');
-INSERT INTO "Service_order" VALUES (10,'308','BF');
-INSERT INTO "Service_order" VALUES (11,'307','BF');
-INSERT INTO "Service_order" VALUES (12,'201','PRK');
-INSERT INTO "Service_order" VALUES (13,'205','LDRY');
-INSERT INTO "Service_order" VALUES (14,'305','PLGR');
-INSERT INTO "Service_order" VALUES (15,'102','BCH');
-INSERT INTO "Service_order" VALUES (16,'405','WFL');
-INSERT INTO "Service_order" VALUES (17,'207','WFH');
-INSERT INTO "Service_order" VALUES (18,'308','WFH');
-INSERT INTO "Service_order" VALUES (19,'402','BF');
-INSERT INTO "Service_order" VALUES (20,'307','SPA');
-INSERT INTO "Service_order" VALUES (21,'308','LDRY');
-INSERT INTO "Service_order" VALUES (22,'209','BFFT');
-INSERT INTO "Service_order" VALUES (23,'201','SPA');
-INSERT INTO "Service_order" VALUES (24,'204','PRK');
-INSERT INTO "Service_order" VALUES (25,'403','LDRY');
-INSERT INTO "Service_order" VALUES (26,'305','SPT');
-INSERT INTO "Service_order" VALUES (27,'102','SPT');
-INSERT INTO "Service_order" VALUES (28,'201','BF');
-INSERT INTO "Service_order" VALUES (29,'408','PET');
-INSERT INTO "Service_order" VALUES (30,'207','SNK');
+INSERT INTO "Service_order" ("ID","Res_ID","Service_ID") VALUES (1,14,'BF'),
+ (2,3,'PRK'),
+ (3,29,'BCH'),
+ (4,29,'SPT'),
+ (5,7,'SPA'),
+ (6,28,'PET'),
+ (7,7,'PET'),
+ (8,20,'SPA'),
+ (9,19,'BF'),
+ (10,30,'BF'),
+ (11,23,'BFFT'),
+ (12,19,'LDRY'),
+ (13,23,'PRK'),
+ (14,20,'LDRY'),
+ (15,11,'PLGR'),
+ (16,12,'BCH'),
+ (17,20,'WFL'),
+ (18,11,'WFH'),
+ (19,4,'WFH'),
+ (20,11,'BF'),
+ (21,15,'SPA'),
+ (22,14,'BFFT'),
+ (23,5,'SPA'),
+ (24,30,'PRK'),
+ (25,8,'LDRY'),
+ (26,16,'SPT'),
+ (27,21,'SPT'),
+ (28,2,'BF'),
+ (29,18,'PET'),
+ (30,12,'SNK');
 
 INSERT INTO "Position_ID" VALUES (1,'General Manager',30000000);
 INSERT INTO "Position_ID" VALUES (2,'Sales',15000000);
