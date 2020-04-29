@@ -70,4 +70,9 @@ WHERE ID = (SELECT Room_ID FROM Reservation WHERE Customer_ID = (SELECT ID FROM 
 /* delete a record of an employee by full name and position */
 DELETE 
 FROM Employee
-WHERE First_name = "James" AND Last_name = "Gray" AND Position_ID = (SELECT ID FROM Position_ID WHERE Position = "Chef")        
+WHERE First_name = "James" AND Last_name = "Gray" AND Position_ID = (SELECT ID FROM Position_ID WHERE Position = "Chef")  
+                                                                 
+/* update contact information of customer named John Doe */                                                                 
+UPDATE Customer
+SET Phone = "872288651", Email = "JohnDoe17@gmail.com"
+WHERE first_name = "John" AND last_name = "Doe"
