@@ -57,5 +57,9 @@ from Reservation r, room ro, category ca
 where r.Room_ID = ro.id and ro.category_id = ca.id and 
 r.Day_in >= '2015-06-01' and r.Day_out <= '2015-06-30'
 
-/* delete a record of customer named "John Doe" */
-DELETE FROM Customer WHERE First_name = "John" AND Last_name = "Doe"
+/* delete a reservation of customer named "John Doe" */
+DELETE 
+FROM Reservation
+WHERE  Reservation.Customer_ID = (SELECT ID FROM Customer c WHERE c.First_name = "John" AND c.Last_name = "Doe")
+
+
