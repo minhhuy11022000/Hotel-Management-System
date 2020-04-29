@@ -67,7 +67,7 @@ UPDATE room
 SET status_id = (SELECT ID FROM room_status WHERE status = "Vacant and Ready")
 WHERE ID = (SELECT Room_ID FROM Reservation WHERE Customer_ID = (SELECT ID FROM Customer WHERE First_name = "John" AND Last_name = "Doe"))
 
-/* delete a record of an employee */
+/* delete a record of an employee by full name and position */
 DELETE 
 FROM Employee
 WHERE First_name = "James" AND Last_name = "Gray" AND Position_ID = (SELECT ID FROM Position_ID WHERE Position = "Chef")        
