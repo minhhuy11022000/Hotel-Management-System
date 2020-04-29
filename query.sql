@@ -62,4 +62,9 @@ DELETE
 FROM Reservation
 WHERE  Reservation.Customer_ID = (SELECT ID FROM Customer c WHERE c.First_name = "John" AND c.Last_name = "Doe")
 
+/* update a status of the room of customer named "John Doe" */
+UPDATE room
+SET status_id = (SELECT ID FROM room_status WHERE status = "Vacant and Ready")
+WHERE ID = (SELECT Room_ID FROM Reservation WHERE Customer_ID = (SELECT ID FROM Customer WHERE First_name = "John" AND Last_name = "Doe"))
+
 
