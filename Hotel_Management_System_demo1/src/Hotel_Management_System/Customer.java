@@ -8,6 +8,8 @@ package Hotel_Management_System;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -15,6 +17,8 @@ import java.util.logging.Logger;
  */
 public class Customer {
     ConnectDb conn = new ConnectDb();
+    PreparedStatement pst;
+    ResultSet rs;
     //create method to register an account
     public boolean registerAcc(String fname, String lname, String gender,
             String phone, String username, String password){
@@ -41,4 +45,31 @@ public class Customer {
     //create method to edit customer
     
     //create method to remove customer
+    
+    //create method to show Customer info to the table
+    public void showCustomerInfoTable(JTable table){
+        String selectQuery = "SELECT * FROM `CustomerInfo`";
+        try {
+            pst = conn.connectDb().prepareStatement(selectQuery);
+            
+            rs = pst.executeQuery();
+            
+            DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
+            
+            Object row[];
+            
+            while(rs.next()){
+                row = new Object[5];
+                row[0] = rs.getInt(1);
+                row[1] = rs.getString(2);
+                row[2] = rs.getString(3);
+                row[3] = rs.getString(4);
+                row[4] = rs.getString(5);
+                       
+                tableModel.addRow(row);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageCustomerFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

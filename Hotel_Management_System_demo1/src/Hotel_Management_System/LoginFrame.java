@@ -21,7 +21,7 @@ public class LoginFrame extends javax.swing.JFrame {
      */
     public LoginFrame() {
         initComponents();
-//        conn = ConnectDb.connectDb();
+        
         this.setLocationRelativeTo(null);
     }
 
@@ -198,10 +198,10 @@ public class LoginFrame extends javax.swing.JFrame {
         String sql = "select * from CustomerInfo where username=? and password=?";
         
         if(userName.trim().equals("")){
-            JOptionPane.showMessageDialog(null, "Enter username to login", "Empty username", 2);
+            JOptionPane.showMessageDialog(null, "Enter username to login", "Empty Username", 2);
         }
         else if(password.trim().equals("")){
-             JOptionPane.showMessageDialog(null, "Enter password to login", "Empty password",2);
+             JOptionPane.showMessageDialog(null, "Enter password to login", "Empty Password",2);
         }
         else{
                
