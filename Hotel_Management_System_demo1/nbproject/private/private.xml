@@ -3,10 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Hotel_Management_System_demo1/src/Hotel_Management_System/LoginFrame.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Hotel_Management_System_demo1/src/Hotel_Management_System/Customer.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Hotel_Management_System_demo1/src/Hotel_Management_System/RegisterFrame.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Hotel_Management_System_demo1/src/Hotel_Management_System/ConnectDb.java</file>
+            <file>file:/G:/GIT/Hotel-Management-System/Hotel_Management_System_demo1/src/Hotel_Management_System/LoginFrame.java</file>
+            <file>file:/G:/GIT/Hotel-Management-System/Hotel_Management_System_demo1/src/Hotel_Management_System/ManageCustomerFrame.java</file>
         </group>
     </open-files>
 </project-private>

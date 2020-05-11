@@ -270,11 +270,16 @@ public class RegisterFrame extends javax.swing.JFrame {
         String phone = txtPhone.getText();
         String username = txtUsername.getText();
         String password = txtPassword.getText();
+        
+        if(fname.trim().equals("") || lname.trim().equals("") || phone.trim().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "First name, Last name, Phone must be filled", "Empty Fields", JOptionPane.WARNING_MESSAGE);
+        }else{
             if(customer.registerAcc(fname, lname, gender, phone, username, password)){
                 JOptionPane.showMessageDialog(rootPane, "New account added.", "Account added.", JOptionPane.INFORMATION_MESSAGE);
             }else{
                 JOptionPane.showMessageDialog(rootPane, "New account not added.", "Account added error.", JOptionPane.INFORMATION_MESSAGE);
             }
+        }           
     }//GEN-LAST:event_btnCreateActionPerformed
 
     /**
