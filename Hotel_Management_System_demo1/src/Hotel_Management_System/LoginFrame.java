@@ -8,20 +8,23 @@ package Hotel_Management_System;
 import javax.swing.*;
 import java.sql.*;
 import java.awt.*;
+
 /**
  *
  * @author Admin
  */
 public class LoginFrame extends javax.swing.JFrame {
+
     ConnectDb conn = new ConnectDb();
     ResultSet rs = null;
     PreparedStatement pst = null;
+
     /**
      * Creates new form LoginFrame
      */
     public LoginFrame() {
         initComponents();
-        
+
         this.setLocationRelativeTo(null);
     }
 
@@ -195,38 +198,37 @@ public class LoginFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         String userName = txtUsername.getText();
         String password = txtPassword.getText();
-        String sql = "select * from CustomerInfo where username=? and password=?";
-        
-        if(userName.trim().equals("")){
+        String customerSql = "select * from Customer where username=? and password=?";
+        String managerSql = "select * from Manager where username=? and password=?";
+
+        if (userName.trim().equals("")) {
             JOptionPane.showMessageDialog(null, "Enter username to login", "Empty Username", 2);
-        }
-        else if(password.trim().equals("")){
-             JOptionPane.showMessageDialog(null, "Enter password to login", "Empty Password",2);
-        }
-        else{
-               
-                try{
-                    pst = conn.connectDb().prepareStatement(sql);
+        } else if (password.trim().equals("")) {
+            JOptionPane.showMessageDialog(null, "Enter password to login", "Empty Password", 2);
+        } else {
+
+            try {
+
+                if (boxLogin.getSelectedItem().equals("Customer")) pst = conn.connectDb().prepareStatement(customerSql);
+                else pst = conn.connectDb().prepareStatement(managerSql);
                 
-                    pst.setString(1, userName);
-                    pst.setString(2, password);
-                
-                    rs = pst.executeQuery();
-                
-                    if(rs.next()){
-                        MainFrame mainFrame = new MainFrame();
-                        mainFrame.setVisible(true);
-                        mainFrame.setLocationRelativeTo(null);
-                        this.dispose();
-                    }
-                    else{
-                        JOptionPane.showMessageDialog(null, "Wrong username or password.", "Login Error", 2);
-                    }
-                    
+                pst.setString(1, userName);
+                pst.setString(2, password);
+
+                rs = pst.executeQuery();
+
+                if (rs.next()) {
+                    MainFrame mainFrame = new MainFrame();
+                    mainFrame.setVisible(true);
+                    mainFrame.setLocationRelativeTo(null);
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Wrong username or password.", "Login Error", 2);
                 }
-                catch(SQLException e){
-                    e.printStackTrace();
-                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
 //        try{
 //            pst = conn.prepareStatement(sql);
