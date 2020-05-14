@@ -48,7 +48,7 @@ public class Customer {
     
     //create method to show Customer info to the table
     public void showCustomerInfoTable(JTable table){
-        String selectQuery = "SELECT * FROM `CustomerInfo`";
+        String selectQuery = "SELECT * FROM `Customer`";
         try {
             pst = conn.connectDb().prepareStatement(selectQuery);
             
