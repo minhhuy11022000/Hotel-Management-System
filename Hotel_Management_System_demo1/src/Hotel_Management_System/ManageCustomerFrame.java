@@ -341,8 +341,6 @@ public class ManageCustomerFrame extends javax.swing.JFrame {
             pst.executeUpdate();
             JOptionPane.showMessageDialog(null, "Update");
             
-            DefaultTableModel model = (DefaultTableModel) tableCustomer.getModel();
-            model.setRowCount(0);
             
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, e);
@@ -357,9 +355,9 @@ public class ManageCustomerFrame extends javax.swing.JFrame {
             pst.executeUpdate();
             JOptionPane.showMessageDialog(null, "Deleted");
             
-            DefaultTableModel model = (DefaultTableModel) tableCustomer.getModel();
-            model.setRowCount(0);
-            
+//            DefaultTableModel model = (DefaultTableModel) tableCustomer.getModel();
+//            model.setRowCount(0);
+//            
 //            customer.showCustomerInfoTable(tableCustomer);
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, e);
@@ -384,6 +382,9 @@ public class ManageCustomerFrame extends javax.swing.JFrame {
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
         // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) tableCustomer.getModel();
+            model.setRowCount(0);
+            
         customer.showCustomerInfoTable(tableCustomer);
     }//GEN-LAST:event_btnRefreshActionPerformed
 
