@@ -24,7 +24,7 @@ public class Customer {
             String phone, String username, String password){
         PreparedStatement pst;
         ResultSet rs;
-        String regisQuery = "INSERT INTO `CustomerInfo`(`FirstName`,`LastName`,`Gender`,`Phone`,`Username`,`Password`) VALUES (?,?,?,?,?,?)";
+        String regisQuery = "INSERT INTO `Customer`(`FirstName`,`LastName`,`Gender`,`Phone`,`Username`,`Password`) VALUES (?,?,?,?,?,?)";
         try {
             pst = conn.connectDb().prepareStatement(regisQuery);
             pst.setString(1, fname);
