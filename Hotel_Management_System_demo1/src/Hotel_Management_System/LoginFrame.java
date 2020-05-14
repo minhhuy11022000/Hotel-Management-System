@@ -198,7 +198,7 @@ public class LoginFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         String userName = txtUsername.getText();
         String password = txtPassword.getText();
-        String customerSql = "select * from Customer where username=? and password=?";
+        String customerSql = "select * from CustomerInfo where username=? and password=?";
         String managerSql = "select * from Manager where username=? and password=?";
 
         if (userName.trim().equals("")) {
