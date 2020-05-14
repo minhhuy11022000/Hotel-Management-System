@@ -59,6 +59,7 @@ public class ManageCustomerFrame extends javax.swing.JFrame {
         btnRemove = new javax.swing.JButton();
         btnClearField = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
+        btnRefresh = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -202,12 +203,20 @@ public class ManageCustomerFrame extends javax.swing.JFrame {
             }
         });
 
+        btnRefresh.setBackground(new java.awt.Color(255, 255, 255));
+        btnRefresh.setText("Refresh");
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -234,7 +243,9 @@ public class ManageCustomerFrame extends javax.swing.JFrame {
                         .addComponent(btnRemove))
                     .addComponent(btnClearField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnRefresh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE))
                 .addGap(22, 22, 22))
         );
         jPanel2Layout.setVerticalGroup(
@@ -268,9 +279,13 @@ public class ManageCustomerFrame extends javax.swing.JFrame {
                             .addComponent(btnRemove)
                             .addComponent(btnEdit))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnClearField))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 17, Short.MAX_VALUE))
+                        .addComponent(btnClearField)
+                        .addGap(0, 140, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRefresh)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -329,7 +344,6 @@ public class ManageCustomerFrame extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) tableCustomer.getModel();
             model.setRowCount(0);
             
-            customer.showCustomerInfoTable(tableCustomer);
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, e);
         }
@@ -346,7 +360,7 @@ public class ManageCustomerFrame extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) tableCustomer.getModel();
             model.setRowCount(0);
             
-            customer.showCustomerInfoTable(tableCustomer);
+//            customer.showCustomerInfoTable(tableCustomer);
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, e);
         }
@@ -367,6 +381,11 @@ public class ManageCustomerFrame extends javax.swing.JFrame {
         GenderField.setText(model.getValueAt(rIndex, 3).toString());
         PhoneField.setText(model.getValueAt(rIndex, 4).toString());
     }//GEN-LAST:event_tableCustomerMouseClicked
+
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+        // TODO add your handling code here:
+        customer.showCustomerInfoTable(tableCustomer);
+    }//GEN-LAST:event_btnRefreshActionPerformed
 
     /**
      * @param args the command line arguments
@@ -411,6 +430,7 @@ public class ManageCustomerFrame extends javax.swing.JFrame {
     private javax.swing.JTextField PhoneField;
     private javax.swing.JButton btnClearField;
     private javax.swing.JButton btnEdit;
+    private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnRemove;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
