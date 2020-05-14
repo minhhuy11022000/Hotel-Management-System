@@ -10,6 +10,8 @@ import javax.swing.*;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -17,6 +19,7 @@ import net.proteanit.sql.DbUtils;
  * @author Admin
  */
 public class ManageCustomerFrame extends javax.swing.JFrame {
+    ConnectDb conn = new ConnectDb();
     Customer customer = new Customer();
     /**
      * Creates new form ManageCustomerFrame
@@ -161,12 +164,22 @@ public class ManageCustomerFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tableCustomer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableCustomerMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tableCustomer);
 
         btnRemove.setBackground(new java.awt.Color(255, 255, 255));
         btnRemove.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
         btnRemove.setText("Remove");
         btnRemove.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRemove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveActionPerformed(evt);
+            }
+        });
 
         btnClearField.setBackground(new java.awt.Color(255, 0, 0));
         btnClearField.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
@@ -296,11 +309,63 @@ public class ManageCustomerFrame extends javax.swing.JFrame {
 
     private void btnClearFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearFieldActionPerformed
         // TODO add your handling code here:
+        IdField.setText("");
+        FirstNameField.setText("");
+        LastNameField.setText("");
+        GenderField.setText("");
+        PhoneField.setText("");
     }//GEN-LAST:event_btnClearFieldActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
+         String editQuery = "UPDATE CustomerInfo SET FirstName='"+FirstNameField.getText()+"',LastName='"+LastNameField.getText()
+                +"',Phone='"+PhoneField.getText()+"'WHERE ID="+IdField.getText();
+        try{
+            PreparedStatement pst = conn.connectDb().prepareStatement(editQuery);
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Update");
+            
+            DefaultTableModel model = (DefaultTableModel) tableCustomer.getModel();
+            model.setRowCount(0);
+            
+            customer.showCustomerInfoTable(tableCustomer);
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }
     }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
+        // TODO add your handling code here:
+        String deleteQuery = "DELETE FROM CustomerInfo WHERE ID="+IdField.getText();
+        try{
+            PreparedStatement pst = conn.connectDb().prepareStatement(deleteQuery);
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Deleted");
+            
+            DefaultTableModel model = (DefaultTableModel) tableCustomer.getModel();
+            model.setRowCount(0);
+            
+            customer.showCustomerInfoTable(tableCustomer);
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_btnRemoveActionPerformed
+
+    private void tableCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCustomerMouseClicked
+        // TODO add your handling code here:
+        //get the table model
+        TableModel model = tableCustomer.getModel();
+        
+        //get selected row index 
+        int rIndex = tableCustomer.getSelectedRow();
+        
+        //display data
+        IdField.setText(model.getValueAt(rIndex, 0).toString());
+        FirstNameField.setText(model.getValueAt(rIndex, 1).toString());
+        LastNameField.setText(model.getValueAt(rIndex, 2).toString());
+        GenderField.setText(model.getValueAt(rIndex, 3).toString());
+        PhoneField.setText(model.getValueAt(rIndex, 4).toString());
+    }//GEN-LAST:event_tableCustomerMouseClicked
 
     /**
      * @param args the command line arguments
