@@ -318,7 +318,8 @@ public class ManageCustomerFrame extends javax.swing.JFrame {
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
-         String editQuery = "UPDATE CustomerSET FirstName='"+FirstNameField.getText()+"',LastName='"+LastNameField.getText()
+        String editQuery = "UPDATE Customer SET FirstName='"+FirstNameField.getText()+"',LastName='"+LastNameField.getText()
+
                 +"',Phone='"+PhoneField.getText()+"'WHERE ID="+IdField.getText();
         try{
             PreparedStatement pst = conn.connectDb().prepareStatement(editQuery);
