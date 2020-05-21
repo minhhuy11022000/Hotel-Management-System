@@ -1,0 +1,26 @@
+﻿room_status_id,room_status,description
+1,Occupied,A guest is currently occupied in the room
+2,Stayover,The guest is not expected to check out today and will remain at least one more night.
+3,On-Change,"The guest has departed, but the room has not yet been cleaned and ready for sale."
+4, Do Not Disturb,The guest has requested not to be disturbed
+5,Cleaning in progress,Room attendant is currently cleaning this room
+6,Sleep-out,"A guest is registered to the room, but the bed has not been used"
+7,On-Queue,"Guest has arrived at the hotel, but the room assigned is not yet ready"
+8,Skipper,The guest has left the hotel without making arrangements to settle his or her account.
+9,Vacant and ready,The room has been cleaned and inspected and is ready for an arriving guest.
+10, Lockout,The room has been locked so that the guest cannot re-enter until he or she is cleared by a hotel official.
+11,Did not check out,"The guest made arrangements to settle his or her bills ( and thus not a skipper), but has left without informing the front desk."
+12, Due Out,The room is expected to become vacant after the following guest checks out.
+13,Check-Out,"The guest has settled his or her account, returned the room keys and left the hotel."
+14,Late Check out,The guest has requested and is being allowed to check out later than the normal/standard departure time of the hotel.
+15,Early Check-in,Guest has requested for an Early Checkin and is being allowed to check-in earlier than the normal/standard check-in time of the hotel.
+16,Vacant and Clean ,Room is Vacant and Cleaned by the housekeeper.
+17,Vacant and Dirty,Room is Vacant and Dirty.
+18,Vacant and Ready,Room is Vacant and Ready for Check-in
+19,Occupied and Clean,Room is Occupied and Cleaned by the Housekeeping.
+20,Occupied and Dirty ,Room is Occupied and yet to be cleaned by the housekeeping.
+21,Double Lock,Guest has put a double lock in the room.
+22,Chain Lock,Guest has placed a Chain Lock in the room.
+23,House Use ,Room is used by the hotel staff or someone staying from the management team.
+24,No Show, A guest who made a room reservation but did not register or Check-in.
+25,Service Refused,Guest refused to clean the room.
