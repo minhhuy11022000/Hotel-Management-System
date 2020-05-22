@@ -320,7 +320,7 @@ public class AccountManager extends javax.swing.JFrame {
             System.out.println(ps);
             ps.executeUpdate();
 
-            JOptionPane.showMessageDialog(null, "Remove successfully", "Notification", 2);
+                JOptionPane.showMessageDialog(null, "Remove successfully", "Notification", 2);
             model.setRowCount(0);
             employee.showAccountsInfo(accountsTable);
 
