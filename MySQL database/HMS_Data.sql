@@ -46,13 +46,13 @@ INSERT INTO `manager` VALUES ('tientai','123');
 UNLOCK TABLES;
 
 --
--- Dumping data for table `postion`
+-- Dumping data for table `position`
 --
 
-LOCK TABLES `postion` WRITE;
-/*!40000 ALTER TABLE `postion` DISABLE KEYS */;
-INSERT INTO `postion` VALUES (1,'General Manager',30000000),(2,'Sales',15000000),(3,'Spa Manager',14000000),(4,'Event Planner',10000000),(5,'Event Manager',14000000),(6,'Chef',14000000),(7,'Cook',7000000),(8,'Beverage Manager',8000000),(9,'Front Desk',8000000),(10,'Concierge',5000000),(11,'Bellhop',4000000),(12,'Housekepping Manager',10000000),(13,'Housekeeper',3000000),(14,'Server',3000000);
-/*!40000 ALTER TABLE `postion` ENABLE KEYS */;
+LOCK TABLES `position` WRITE;
+/*!40000 ALTER TABLE `position` DISABLE KEYS */;
+INSERT INTO `position` VALUES (1,'General Manager',30000000),(2,'Sales',15000000),(3,'Spa Manager',14000000),(4,'Event Planner',10000000),(5,'Event Manager',14000000),(6,'Chef',14000000),(7,'Cook',7000000),(8,'Beverage Manager',8000000),(9,'Front Desk',8000000),(10,'Concierge',5000000),(11,'Bellhop',4000000),(12,'Housekepping Manager',10000000),(13,'Housekeeper',3000000),(14,'Server',3000000);
+/*!40000 ALTER TABLE `position` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -94,4 +94,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-23 15:00:53
+-- Dump completed on 2020-05-23 16:10:45
