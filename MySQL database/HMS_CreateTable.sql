@@ -59,7 +59,7 @@ CREATE TABLE `employee` (
   PRIMARY KEY (`ID`),
   UNIQUE KEY `Account_UNIQUE` (`Account`),
   KEY `FK_Position_Id_idx` (`Position_ID`),
-  CONSTRAINT `FK_Pos_Id` FOREIGN KEY (`Position_ID`) REFERENCES `postion` (`ID`)
+  CONSTRAINT `FK_Pos_Id` FOREIGN KEY (`Position_ID`) REFERENCES `position` (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -78,13 +78,13 @@ CREATE TABLE `manager` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `postion`
+-- Table structure for table `position`
 --
 
-DROP TABLE IF EXISTS `postion`;
+DROP TABLE IF EXISTS `position`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `postion` (
+CREATE TABLE `position` (
   `ID` int NOT NULL AUTO_INCREMENT,
   `Position` varchar(45) DEFAULT NULL,
   `Salary` int DEFAULT NULL,
@@ -155,4 +155,4 @@ CREATE TABLE `type` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-23 15:00:22
+-- Dump completed on 2020-05-23 16:10:29
