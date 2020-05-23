@@ -1,4 +1,4 @@
-ID,first_name,last_name,Gender,Mail,Phone_number,Address,Position_ID,Account,Password
+ID,First_name,Last_name,Gender,Mail,Phone_number,Address,Position_ID,Account,Password
 677509,Lois,Walker,Female,lois.walker@hotmail.com,303-572-8492,272 Denver,12,LoisWalker12,LoisWalker12
 940761,Brenda,Robinson,Female,brenda.robinson@gmail.com,225-945-4954,994 Stonewall,9,BrendaRobinson9,BrendaRobinson9
 428945,Joe,Robinson,Male,joe.robinson@gmail.com,219-904-2161,552 Michigantown,8,JoeRobinson8,JoeRobinson8
